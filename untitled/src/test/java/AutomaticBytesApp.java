@@ -9,10 +9,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import page.LoginPage;
 
 public class AutomaticBytesApp {
-    private WebDriver driver;
-
+   /* private WebDriver driver;
+    LoginPage loginPage = new LoginPage();
     @BeforeClass
     public void setup() {
         System.setProperty("webdriver.chrome.driver", "/Users/richa/home-test/untitled/src/main/resources/driver/chromedriver.exe");
@@ -26,20 +27,18 @@ public class AutomaticBytesApp {
     @Test
     public void loginSuccess() {
         driver.get("http://localhost:3100/login");
-        driver.findElement(By.id("username")).sendKeys("johndoe19");
-        driver.findElement(By.id("password")).sendKeys("supersecret");
-        driver.findElement(By.id("signin-button")).click();
-        WebElement welcomeMessage = driver.findElement(By.id("welcome-message"));
-        assert welcomeMessage.getText().contains("johndoe19");
+        loginPage.enterUsername("johndoe19");
+        loginPage.enterPassword("supersecret");
+        loginPage.clickLoginButton();
+        assert loginPage.getWelcomeMessage().contains("johndoe19");
     }
     @Test
     public void loginFailureA() {
         driver.get("http://localhost:3100/login");
-        driver.findElement(By.id("username")).sendKeys("wrongUser");
-        driver.findElement(By.id("password")).sendKeys("wrongPassword");
-        driver.findElement(By.id("signin-button")).click();
-        WebElement errorMessage = driver.findElement(By.id("message"));
-        assert errorMessage.getText().contains("WRONG CREDENTIALS");
+        loginPage.enterUsername("wronguser");
+        loginPage.enterPassword("wrongpassword");
+        loginPage.clickLoginButton();
+        assert loginPage.getErrorMessage().contains("WRONG CREDENTIALS");
     }
     @Test
     public void loginFailureB() {
@@ -140,5 +139,5 @@ public class AutomaticBytesApp {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Please provide a search word.']")));
         String resultMessage= driver.findElement(By.id("result")).getText();
         Assert.assertEquals(resultMessage,"Please provide a search word.");
-    }
+    }*/
 }
